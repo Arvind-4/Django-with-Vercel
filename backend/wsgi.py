@@ -7,6 +7,7 @@ For more information on this file, see
 https://docs.djangoproject.com/en/3.2/howto/deployment/wsgi/
 """
 
+from gc import collect
 import os
 
 from django.core.wsgi import get_wsgi_application
@@ -51,6 +52,14 @@ create_superuser_command = [
     "--noinput",
 ]
 
+collect_static_command = [
+    "python3.9",
+    "manage.py",
+    "collectstatic",
+    "--noinput",
+]
+
 subprocess.run(makemigration_command)
 subprocess.run(migrate_command)
 subprocess.run(create_superuser_command)
+subprocess.run(collect_static_command)
