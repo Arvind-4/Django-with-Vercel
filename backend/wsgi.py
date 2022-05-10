@@ -18,48 +18,48 @@ application = get_wsgi_application()
 
 app = application
 
-import subprocess
-from dotenv import load_dotenv
+# import subprocess
+# from dotenv import load_dotenv
 
-load_dotenv()
+# load_dotenv()
 
-DJANGO_SUPERUSER_USERNAME = str(os.environ.get("DJANGO_SUPERUSER_USERNAME"))
-DJANGO_SUPERUSER_PASSWORD = str(os.environ.get("DJANGO_SUPERUSER_PASSWORD"))
-DJANGO_SUPERUSER_EMAIL = str(os.environ.get("DJANGO_SUPERUSER_EMAIL"))
+# DJANGO_SUPERUSER_USERNAME = str(os.environ.get("DJANGO_SUPERUSER_USERNAME"))
+# DJANGO_SUPERUSER_PASSWORD = str(os.environ.get("DJANGO_SUPERUSER_PASSWORD"))
+# DJANGO_SUPERUSER_EMAIL = str(os.environ.get("DJANGO_SUPERUSER_EMAIL"))
 
-migrate_command = [
-    "python3.9",
-    "manage.py",
-    "migrate",
-    "--noinput",
-]
+# migrate_command = [
+#     "python3.9",
+#     "manage.py",
+#     "migrate",
+#     "--noinput",
+# ]
 
-makemigration_command = [
-    "python3.9",
-    "manage.py",
-    "makemigrations",
-    "--noinput",
-]
+# makemigration_command = [
+#     "python3.9",
+#     "manage.py",
+#     "makemigrations",
+#     "--noinput",
+# ]
 
-create_superuser_command = [
-    "python3.9",
-    "manage.py",
-    "createsuperuser",
-    "--email",
-    f"{DJANGO_SUPERUSER_EMAIL}",
-    "--username",
-    f"{DJANGO_SUPERUSER_USERNAME}",
-    "--noinput",
-]
+# create_superuser_command = [
+#     "python3.9",
+#     "manage.py",
+#     "createsuperuser",
+#     "--email",
+#     f"{DJANGO_SUPERUSER_EMAIL}",
+#     "--username",
+#     f"{DJANGO_SUPERUSER_USERNAME}",
+#     "--noinput",
+# ]
 
-collect_static_command = [
-    "python3.9",
-    "manage.py",
-    "collectstatic",
-    "--noinput",
-]
+# collect_static_command = [
+#     "python3.9",
+#     "manage.py",
+#     "collectstatic",
+#     "--noinput",
+# ]
 
-subprocess.run(makemigration_command)
-subprocess.run(migrate_command)
-subprocess.run(create_superuser_command)
-subprocess.run(collect_static_command)
+# subprocess.run(makemigration_command)
+# subprocess.run(migrate_command)
+# subprocess.run(create_superuser_command)
+# subprocess.run(collect_static_command)
