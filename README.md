@@ -1,1 +1,1 @@
-# django-vercel
+Django in Vercel
