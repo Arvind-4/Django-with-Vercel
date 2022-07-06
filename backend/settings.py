@@ -25,13 +25,19 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = str(os.environ.get("DJANGO_SECRET_KEY"))
+SECRET_KEY = str(os.environ.get("DJANGO_SECRET_KEY", "Bad-key"))
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = bool(int(os.environ.get("DJANGO_DEBUG", "0")))
 
 ALLOWED_HOSTS = ['*']
 
+# ALLOWED_HOSTS.extend(
+#     filter(
+#         None,
+#         os.environ.get('DJANGO_ALLOWED_HOSTS', '').split(','),
+#     )
+# )
 
 # Application definition
 
@@ -86,14 +92,6 @@ DATABASES = {
     }
 }
 
-DATABASE_URL = str(os.environ.get('DATABASE_URL'))
-
-db_from_env = dj_database_url.config(
-    default=DATABASE_URL,
-    conn_max_age=500
-)
-DATABASES['default'].update(db_from_env)
-
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
 
@@ -118,7 +116,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Kolkata'
 
 USE_I18N = True
 
